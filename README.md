@@ -1,5 +1,11 @@
 # Leveraging RAG for a Low-Resource Audio-Aware Diachronic Analysis of Gendered Toy Marketing
 
+Luca Marinelli<sup>1</sup>, Iacopo Ghinassi<sup>2</sup>, Charalampos Saitis<sup>1</sup>
+
+<sup>1</sup>Centre for Digital Music, Queen Mary University of London, UK
+
+<sup>2</sup>College of Computing and Data Science, Nanyang Technological University, Singapore
+
 Accepted at RANLP 2025 at the [Workshop on Natural Language Processing and Language Models for Digital Humanities](https://ranlp.org/ranlp2025/index.php/workshops/)
 
 #### Abstract
