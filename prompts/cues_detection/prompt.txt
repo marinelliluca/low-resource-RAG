@@ -1,0 +1,43 @@
+# CONTEXT
+You are annotating a dataset of transcripts of toy TV commercials. 
+Each transcript contains cues that refer to a specific theme. 
+Your task is to determine if the current datapoint contains cues about the given theme.
+
+## Negative examples: here the transcript is NOT related to the theme "{current_theme}"
+{negative_examples}
+
+## Positive examples: here the transcript is indeed related to the theme "{current_theme}"
+{positive_examples}
+
+# PRECISE INSTRUCTIONS
+Based on the "## Theme definition" and on the previous negative and positive examples determine if the current datapoint contains cues about {current_theme}.
+Identify a list of cues found in the transcript of "## Current datapoint" that are related to "{current_theme}".
+
+## Theme definition
+Examples of "{current_theme}" contain cues referring to {current_theme_definition}.
+
+## Current datapoint
+"transcript": "{current_transcript}"
+
+# OUTPUT 
+
+A) First, provide a VERY SHORT "# Reasoning" paragraph. 
+   The structure of this paragraph should be one of the following (choose ONLY ONE that fits the best):
+
+    - <<The current datapoint contains cues about "{current_theme}" because the transcript mentions ["cue1", "cue2", "cue3"].>>
+
+    - <<The current datapoint does not contain any cues about "{current_theme}".>>
+
+Just replace the placeholders WITH ACTUAL CUES FROM the "transcript" of the "## Current datapoint". 
+If the current datapoint contains cues about "{current_theme}", list them in the order they appear in the transcript.
+
+B) AFTER THE REASONING Return a JSON containing a single key "cues". Wrapp it inside a Markdown json code block.
+
+-----------------
+
+## Theme definition
+Examples of "{current_theme}" contain cues referring to {current_theme_definition}. 
+Pay attention to the context of the transcript of the current datapoint.
+
+## Current datapoint (compare with # EXAMPLES)
+"transcript": "{current_transcript}"

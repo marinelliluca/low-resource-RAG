@@ -1,0 +1,60 @@
+cls_dict:
+  target_of_toy_ad:
+    - "Girls/women"
+    - "Mixed"
+    - "Boys/men"
+  # the soundtrack contains: 
+  voice_age:
+    - mostly ADULT 
+    - BOTH children and adults
+    - mostly CHILDREN's
+    - skip_this
+  voice_gender:
+    - FEMININE voices
+    - MASCULINE voices
+    - BOTH feminine and masculine voices
+    - skip_this
+  voice_exagg:
+    - skip_this
+    - including a deep, GROWL-LIKE MASCULINE voice
+    - including a high-pitched, SINGSONG FEMININE voice
+    - skip_this
+  voice_type:
+    - with SUNG narration
+    - with SPOKEN narration
+    - with SUNG narration
+    - skip_this
+emo_dict:
+  Happy:
+    - skip_this 
+    - moderately 
+    - very 
+  Energizing:
+    - skip_this 
+    - moderately 
+    - very
+  Angry:
+    - skip_this 
+    - moderately 
+    - very
+mid_dict:
+  Electric/Acoustic:
+    - Electric
+    - skip_this
+    - Acoustic
+  Distorted/Clear:
+    - Distorted
+    - skip_this
+    - Clear
+  Heavy/Light:
+    - Heavy
+    - skip_this
+    - Light
+  Punchy/Smooth:
+    - Punchy
+    - skip_this
+    - Smooth
+  Harmonious/Disharmonious:
+    - Harmonious
+    - skip_this
+    - Disharmonious

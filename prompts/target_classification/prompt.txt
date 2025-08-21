@@ -1,0 +1,57 @@
+# TASKS DESCRIPTION
+You are a scholar working on a dataset of toy TV commercials, where each commercial is targeted at a specific audience. 
+Your task is to determine the target audience of a given commercial based on its transcript and themes.
+Each of the provided datapoints contains the "transcript" of the commercial and a list of "themes" that are present in the "transcript".
+The target audience of each commercial is represented by the key "{classes_key}".
+
+In the following examples the key "{classes_key}" can have {number_of_classes} different values: {classes}.
+
+# EXAMPLES
+
+{examples}
+
+# PRECISE INSTRUCTIONS
+Based on the previous examples, determine the value of "{classes_key}" for the "## Current datapoint".
+
+## Current datapoint (!!!Compare with # EXAMPLES!!!)
+"transcript": "{current_transcript}"
+"themes": {current_themes}
+
+IMPORTANT CONSIDERATIONS: 
+The themes and the transcript often contain gender-based stereotypes associated with the "{classes_key}".
+Some themes are more clearly gender-stereotyped than others, pay attention primarily to such themes, but be careful with false positives.
+Always check the transcript of "## Current datapoint" to spot the false positive themes that might be misleading.
+
+## Definitions of current themes
+{current_themes_definitions}
+
+# OUTPUT
+
+A) First, provide a VERY SHORT "# Reasoning" paragraph. 
+
+The structure of this paragraph should be one of the following (choose the ONE that fits the best):
+
+{reasoning_structure}
+
+The reasoning should be VERY SHORT and concise. Just replace the placeholders with the actual themes from the current datapoint. 
+
+B) AFTER THE REASONING Return a JSON with a single key "{classes_key}" with the above determined value --- choose only ONE from: {classes}.
+Wrapp it inside a Markdown json code block.
+
+-----------------
+## Current datapoint (!!!Compare with # EXAMPLES!!!)
+"transcript": "{current_transcript}"
+"themes": {current_themes}
+
+IMPORTANT CONSIDERATIONS: 
+The themes and the transcript often contain gender-based stereotypes associated with the "{classes_key}".
+Some themes are more clearly gender-stereotyped than others, pay attention primarily to such themes, but be careful with false positives.
+Always check the transcript of "## Current datapoint" to spot the false positive themes that might be misleading.
+
+## Definitions of current themes
+{current_themes_definitions}
+
+Check for the PRESENCE or the LACK of gender-stereotypes such as "doll", "action figure", "princess", "superhero", etc. in the transcript of the current datapoint.
+Base the # Reasoning on the comparison between the transcript and themes of ## Current datapoint and those of the # EXAMPLES.
+Finally, the chosen value of "{classes_key}" for the current datapoint can only be ONE of: {classes}.
+-----------------

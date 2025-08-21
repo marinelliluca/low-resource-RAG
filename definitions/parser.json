@@ -1,0 +1,174 @@
+{
+    "description": "Gender Target Detection App",
+    "args": [
+        {
+            "flags": ["--old_run_folder"],
+            "type": "str",
+            "help": "The folder containing the old run states"
+        },
+        {
+            "flags": ["--recompute_this_theme"],
+            "type": "str",
+            "help": "The theme key to recompute (as defined in definitions/themes.json)"
+        },
+        {
+            "flags": ["--datapoint_id"],
+            "type": "str",
+            "help": "The datapoint id to predict the gender target for"
+        },
+        {
+            "flags": ["--cv_n_folds", "-folds"],
+            "type": "int",
+            "help": "Number of folds for cross validation"
+        },
+        {
+            "flags": ["--cv_seed", "-seed"],
+            "type": "int",
+            "help": "Random seed for cross validation"
+        },
+        {
+            "flags": ["--groundtruth", "-gt"],
+            "type": "str",
+            "default": "files/clean_groundtruth.csv",
+            "help": "The file containing all the metadata, transcripts and groundtruth"
+        },
+        {
+            "flags": ["--frame", "-fr"],
+            "type": "str",
+            "default": "huggingface",
+            "help": "The framework to use to load the models, for now only huggingface is supported"
+        },
+        {
+            "flags": ["--text_column", "-tc"],
+            "type": "str",
+            "default": "transcript",
+            "help": "The name of the column in the groundtruth containing the text"
+        },
+        {
+            "flags": ["--themes_definitions", "-tdef"],
+            "type": "str",
+            "default": "definitions/themes.json",
+            "help": "The file with containing the theme definitions and their example cue words"
+        },
+        {
+            "flags": ["--main_task", "-mt"],
+            "type": "str",
+            "default": "definitions/main_task.json",
+            "help": "The file with containing the main task definition"
+        },
+        {
+            "flags": ["--embedding_model_name", "-emn"],
+            "type": "str",
+            "help": "Name of the model for creating the vector store"
+        },
+        {
+            "flags": ["--provide_theme_classes"],
+            "action": "store_true",
+            "help": "Whether to provide the theme classes"
+        },
+        {
+            "flags": ["--pos_neg_examples_cd", "-pnex"],
+            "type": "int",
+            "help": "Number of positive and negative examples to use in the theme detector"
+        },
+        {
+            "flags": ["--model_name_cd"],
+            "type": "str",
+            "required": false,
+            "help": "Name of the model for the theme detector"
+        },
+        {
+            "flags": ["--temperature_cd"],
+            "type": "float",
+            "help": "Temperature for sampling  for the theme detector"
+        },
+        {
+            "flags": ["--max_new_tokens_cd"],
+            "type": "int",
+            "help": "Maximum number of new tokens to generate for the theme detector"
+        },
+        {
+            "flags": ["--top_k_cd"],
+            "type": "int",
+            "help": "Top-k sampling for the theme detector"
+        },
+        {
+            "flags": ["--do_sample_cd"],
+            "action": "store_false",
+            "help": "Whether to use sampling for the theme detector"
+        },
+        {
+            "flags": ["--attn_implementation_cd"],
+            "type": "str",
+            "help": "Attention implementation for the theme detector"
+        },        
+        {
+            "flags": ["--four_bit_cd"],
+            "action": "store_true",
+            "help": "Whether to use 4-bit quantization for the theme detector"
+        },
+        {
+            "flags": ["--examples_per_class_tc", "-epc"],
+            "type": "int",
+            "help": "Number of examples per class to use in the gender target detector"
+        },
+        {
+            "flags": ["--model_name_tc"],
+            "type": "str",
+            "required": false,
+            "help": "Name of the model for the gender target detector"
+        },
+        {
+            "flags": ["--temperature_tc"],
+            "type": "float",
+            "default": 0.1,
+            "help": "Temperature for sampling for the gender target detector"
+        },
+        {
+            "flags": ["--max_new_tokens_tc"],
+            "type": "int",
+            "default": 50,
+            "help": "Maximum number of new tokens to generate for the gender target detector"
+        },
+        {
+            "flags": ["--top_k_tc"],
+            "type": "int",
+            "default": 50,
+            "help": "Top-k sampling for the gender target detector"
+        },
+        {
+            "flags": ["--do_sample_tc"],
+            "action": "store_false",
+            "help": "Whether to use sampling for the gender target detector"
+        },
+        {
+            "flags": ["--attn_implementation_tc"],
+            "type": "str",
+            "default": "eager",
+            "help": "Attention implementation for the gender target detector"
+        },
+        {
+            "flags": ["--four_bit_tc"],
+            "action": "store_true",
+            "help": "Whether to use 4-bit quantization for for the gender target detector"
+        },
+        {
+            "flags": ["--device"],
+            "type": "str",
+            "default": "cpu",
+            "help": "Device to run the model on"
+        },
+        {
+            "flags": ["--torch_dtype"],
+            "type": "str",
+            "default": "float16",
+            "help": "Torch data type"
+        },
+        {
+            "flags": ["--output_folder", "-of"],
+            "type": "str",
+            "default": "results",
+            "help": "The folder to save the results to"
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+max_epochs: 300
+batch_size: 32 
+cls_dict:
+  target_of_toy_ad:
+    - Girls/women
+    - Mixed
+    - Boys/men
+  voice_age:
+    - Adults (including young adults)
+    - BOTH children and adults
+    - Children
+    - There are no voices
+  voice_gender:
+    - Feminine
+    - Masculine
+    - BOTH feminine and masculine voices
+    - There are no voices
+  #voice_exagg:
+  #  - No, all voices are normal-sounding
+  #  - Yes a masculine voice is gender exaggerated
+  #  - Yes a feminine voice is gender exaggerated
+  #  - There are no voices
+  #voice_type:
+  #  - BOTH spoken and sung
+  #  - Spoken
+  #  - Sung
+  #  - There are no voices
+emo_dict:
+  Happy:
+    - low 
+    - high 
+  #Amusing:
+  #  - low 
+  #  - high
+  Beauty:
+    - low 
+    - high
+  Calm:
+    - low 
+    - high
+  #Energizing:
+  #  - low 
+  #  - high
+  Angry:
+    - low 
+    - high
+  #Triumphant:
+  #  - low 
+  #  - high
+mid_dict:
+  #Many Instruments/Few Instruments:
+  #  - Many Instruments
+  #  - Few Instruments
+  #Wide pitch variation/Narrow pitch variation: 
+  #  - Wide pitch variation
+  #  - Narrow pitch variation
+  #Clear melody/No melody:
+  #  - Clear melody
+  #  - No melody
+  #Repetitive/Non-repetitive:
+  #  - Repetitive
+  #  - Non-repetitive
+  #Complex rhythm/Simple rhythm:
+  #  - Complex rhythm
+  #  - Simple rhythm
+  #Fast tempo/Slow tempo:
+  #  - Fast tempo
+  #  - Slow tempo
+  Strong beat/Weak beat:
+    - Strong beat
+    - Weak beat
+  Electric/Acoustic:
+    - Electric
+    - Acoustic
+  Distorted/Clear:
+    - Distorted
+    - Clear
+  Loud/Soft:
+    - Loud
+    - Soft
+  Heavy/Light:
+    - Heavy
+    - Light
+  High pitch/Low pitch:
+    - High pitch
+    - Low pitch
+  Punchy/Smooth:
+    - Punchy
+    - Smooth
+  Harmonious/Disharmonious:
+    - Harmonious
+    - Disharmonious
+  Dense/Sparse:
+    - Dense
+    - Sparse

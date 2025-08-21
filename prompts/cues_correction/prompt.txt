@@ -1,0 +1,47 @@
+# CONTEXT
+You are working on a project that aims to improve the quality of a dataset of toy TV commercials.
+The dataset contains transcripts and cues that are contained in the transcripts. 
+The cues are supposed to refer to the theme, but sometimes they are incorrect. 
+Your task is to DELETE the cues that are incorrect.
+
+## Negative examples: all these examples do NOT contain cues referring to the theme "{current_theme}"
+{negative_examples}
+
+## Positive examples: all these examples contain cues referring to the theme "{current_theme}"
+{positive_examples}
+
+# PRECISE INSTRUCTIONS
+The provided "cues_old" in the "## Current datapoint" should refer to the provided "## Theme definition".
+Sometimes they do not refer to the theme "{current_theme}" so you need IGNORE the incorrect cues.
+Refer to "## Positive examples" and "## Negative examples" to understand what is correct and incorrect.
+
+## Current datapoint (compare with ## Negative examples and ## Positive examples)
+"transcript": "{current_transcript}"
+"cues_old": {cues_old}
+
+## Theme definition
+Examples of "{current_theme}" contain cues referring to {current_theme_definition}.
+
+# OUTPUT
+
+A) FIRST Provide a VERY SHORT "# Find correct cues" paragraph. 
+   The structure of this paragraph should be one of the following (choose ONLY ONE that fits the best):
+
+   - <<Considering the above "## Theme definition" and the context of the transcript, ONLY these cues in "cues_old" are correct, thus "cues_corrected": [ "correct_cue1", "correct_cue2", ...] >>
+   - <<Considering the above "## Theme definition" and the context of the transcript, no cues are correct, thus "cues_corrected": [] >>
+
+Just replace the placeholders WITH ACTUAL CUES FROM "cues_old". 
+It can be that all of "cues_old" are NOT correct, in that case just return an empty list like in the "## Negative examples".
+
+B) AFTER THE REASONING Return a JSON containing a single key "cues_corrected" with the above determined value.
+   Wrapp "cues_corrected" inside a Markdown json code block.
+
+-----------------
+
+## Theme definition
+Examples of "{current_theme}" contain cues referring to {current_theme_definition}. 
+Pay attention to the context of the transcript of the current datapoint.
+
+## Current datapoint (compare with ## Negative examples and ## Positive examples)
+"transcript": "{current_transcript}"
+"cues_old": {cues_old}

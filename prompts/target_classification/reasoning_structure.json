@@ -1,0 +1,5 @@
+{
+    "Girls/women": "    - <<In the context of the current transcript, the themes <theme1>, <theme2> .. are mainly associated with femininity, so the 'target_of_toy_ad' is 'Girls/women'.>>",
+    "Boys/men": "    - <<In the context of the current transcript, the themes <theme1>, <theme2> .. are mainly associated with masculinity, so the 'target_of_toy_ad' is 'Boys/men'.>>",
+    "Mixed": "    - <<In the context of the current transcript, the themes <theme1>, <theme2> .. can be associated with both femininity and masculinity, so the 'target_of_toy_ad' is 'Mixed'.>>"
+}

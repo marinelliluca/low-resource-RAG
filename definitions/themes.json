@@ -1,0 +1,12 @@
+{
+    "domesticity_nurturing": "housekeeping, cooking, care, nurturing, babies, being a parent, and related words (e.g., clean, cook, care, baby, diapers, bed and bath time). However, it's NEVER related to pets or animals.",
+    "fashion_beauty": "the world of fashion, beauty products, makeup, perfumes, apparel, and related words (e.g., glamour, glitter, hairstyle)",
+    "nature_animals": "nature, animals, and related words (e.g., pet, puppy, cat, dog, bark, trot, leash, zoo)",
+    "love_tenderness": "tenderness, cuddles, CUTE things, friendship, love and related words (e.g., kiss, heart, hugs)",
+    "magic_fantasy": "magic, fantasy, dreams, fairy tales, dragons, unicorns, wizards, and related words (e.g., spell, potion, wand)",
+    "action_adventure": "emergencies, superheroes, stunts, pirates, jungles, spies, and related words (e.g., danger, adventure, mission)",
+    "fight_combat": "war, fighting, combat, battles, all sorts of weapons, guns, knives, swords, martial arts, and related words (e.g., attack, defense, soldier)",
+    "speed_racing": "cars, motors, trains, speed, racing, acceleration, and related words (e.g., wheels, track, driver)",
+    "horror_monsters": "horror, monsters, ghosts, zombies, vampires, werewolves, witches, demons, and related words (e.g., scream, fear, blood)",
+    "arts_crafts": "art, music, creativity, painting, drawing, DIY, handmade, and related words (e.g., brush, color, craft, song)"
+}

@@ -1,0 +1,9 @@
+{
+    "input_variables" : [
+            "current_theme_definition",
+            "positive_examples",
+            "negative_examples",
+            "current_transcript",
+            "current_theme"
+        ]
+}

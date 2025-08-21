@@ -1,0 +1,4 @@
+{
+    "classes": ["Girls/women", "Mixed", "Boys/men"],
+    "classes_key": "target_of_toy_ad"
+}

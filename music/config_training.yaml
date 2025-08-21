@@ -1,0 +1,81 @@
+max_epochs: 300
+batch_size: 32 
+cls_dict:
+  target_of_toy_ad:
+    - Girls/women
+    - Mixed
+    - Boys/men
+  voice_age:
+    - Adults (including young adults)
+    - BOTH children and adults
+    - Children
+    - There are no voices
+  voice_gender:
+    - Feminine
+    - Masculine
+    - BOTH feminine and masculine voices
+    - There are no voices
+  voice_exagg:
+    - No, all voices are normal-sounding
+    - Yes a masculine voice is gender exaggerated
+    - Yes a feminine voice is gender exaggerated
+    - There are no voices
+  voice_type:
+    - BOTH spoken and sung
+    - Spoken
+    - Sung
+    - There are no voices
+emo_dict:
+  Happy:
+    - not 
+    - moderately 
+    - very 
+  Beauty:
+    - not 
+    - moderately 
+    - very
+  Calm:
+    - not 
+    - moderately 
+    - very
+  Energizing:
+    - not 
+    - moderately 
+    - very
+  Angry:
+    - not 
+    - moderately 
+    - very
+mid_dict:
+  Electric/Acoustic:
+    - Electric
+    - undefined
+    - Acoustic
+  Distorted/Clear:
+    - Distorted
+    - undefined
+    - Clear
+  #Loud/Soft:
+  #  - Loud
+  #  - undefined
+  #  - Soft
+  Heavy/Light:
+    - Heavy
+    - undefined
+    - Light
+  #High pitch/Low pitch:
+  #  - High pitch
+  #  - undefined
+  #  - Low pitch
+  Punchy/Smooth:
+    - Punchy
+    - undefined
+    - Smooth
+  Harmonious/Disharmonious:
+    - Harmonious
+    - undefined
+    - Disharmonious
+  #Dense/Sparse:
+  #  - Dense
+  #  - undefined
+  #  - Sparse
