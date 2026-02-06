@@ -47,3 +47,111 @@ prompts
 - `inputs.json` contains the list of inputs for prompt completion.
 - `reasoning_structure.json` contains the reasoning structure for the task.
 - `placeholder.json` contains the placeholder for the task (for debugging and formatting purposes).
+
+## **CORE COMPONENTS**
+
+### **A. Configuration & Argument Parsing** (dynamic_parser.py)
+- **Purpose**: Load and merge configuration from multiple sources
+- **Inputs**: 
+  - Command-line arguments
+  - parser.json (argument definitions)
+  - base_parameters.json (default parameters)
+  - themes.json (10 thematic categories)
+  - main_task.json (target classification: Girls/women, Mixed, Boys/men)
+- **Output**: `argparse.Namespace` with all configuration merged
+
+### **B. State Management** (states.py)
+- **GraphState**: The flow state carrying:
+  - `current_id`: datapoint identifier
+  - `current_transcript`: ad text to classify
+  - `collected_cues`: theme detections (dict of ThemeState → List[str])
+  - `target_class`: final gender prediction
+  - `exclude_from_vector_store`: IDs to skip (for cross-validation)
+
+### **C. Data Layer** (tools.py)
+- **`load_data()`**: Loads CSV groundtruth with theme cues and target labels
+- **`convert_df_to_documents()`**: Converts dataframe rows to LangChain `Document` objects with metadata
+  - Metadata includes: themes, cue words, target classification
+- **`get_prompt()`**: Loads prompt templates, inputs, and reasoning structures from prompts subfolder
+- **`get_top_classes_per_theme()`**: Identifies dominant classes per theme using frequency balancing
+
+### **D. Vector Database** (vector_db.py)
+- **VectorDB class**: Wrapper around Chroma with HuggingFace embeddings
+- **Key Methods**:
+  - `create_vector_database()`: Embeds and stores documents
+  - `query_vector_database()`: Similarity search with metadata filtering
+  - `get_positive_negative_examples()`: Retrieves examples by theme presence/absence
+  - `get_targeted_examples()`: Retrieves class-specific examples for few-shot learning
+
+### **E. LLM Interface** (llm.py)
+- **Chain class**: Wraps HuggingFace models with LangChain
+- **Key Methods**:
+  - `run()`: Executes prompt + model with error recovery
+  - Handles JSON parsing with fallback corrections
+  - Uses task-specific placeholders on parsing failure
+- **Error Handling**: 3-tier retry mechanism
+  1. Parse LLM output as JSON
+  2. Ask model to reformat if invalid
+  3. Return placeholder if both fail
+
+### **F. Workflow Orchestration** (workflow.py)
+- **WorkflowHandler class**: Main orchestrator using LangGraph StateGraph
+- **Workflow Graph**:
+  ```
+  START → _initialize_datapoint → _detect_cues → _classify_target → END
+  ```
+
+---
+
+## **WORKFLOW NODES (Processing Pipeline)**
+
+### **Node 1: _initialize_datapoint()**
+- Initializes empty `collected_cues` dict for all themes
+- Creates initial GraphState with transcript and ID
+
+### **Node 2: _detect_cues()**
+- **Loop**: For each theme in themes.json
+- **RAG**: Retrieves positive/negative examples from vector store
+- **LLM Call**: Uses prompt from cues_detection + Chain.run()
+- **Output**: Populates `collected_cues[theme]` with detected cue words
+- **Optional**: Checks precomputed results from `old_run_folder`
+
+### **Node 3: _classify_target()**
+- **Theme Filter**: Only uses themes where cues were detected
+- **Parallel Subtasks** (via `__subtask_wrapper`):
+  - For subsets of target classes, retrieves targeted examples
+  - Calls LLM with reasoning structure from reasoning_structure.json
+- **Decision Logic**: `decision_logic()` combines multiple task results via voting
+- **Output**: `target_class` (Girls/women, Mixed, or Boys/men)
+
+### **Helper: decision_logic()**
+- Counts predictions from parallel subtasks
+- Returns majority vote
+- On tie: uses task-specific class sets to break ties
+- Normalizes output (e.g., "boys" → "Boys/men")
+
+---
+
+## **DATA RELATIONSHIPS**
+
+```
+Configuration (parser.json + base_parameters.json)
+    ↓
+Themes Definition (themes.json) + Main Task (main_task.json)
+    ↓
+Groundtruth Data (clean_groundtruth.csv)
+    ↓
+Documents + Metadata (via convert_df_to_documents)
+    ↓
+Vector Store (Chroma + HF Embeddings)
+    ↓
+RAG Examples (Retrieved for each task)
+    ↓
+Prompt Templates (from prompts/ folder)
+    ↓
+LLM Chains (with error recovery)
+    ↓
+GraphState (Accumulated through workflow)
+    ↓
+Output (Results saved to output_folder)
+```
