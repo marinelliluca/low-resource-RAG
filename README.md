@@ -155,3 +155,27 @@ GraphState (Accumulated through workflow)
     ↓
 Output (Results saved to output_folder)
 ```
+
+---
+
+### **EXECUTION FLOW (app.py)**
+
+```
+Parse Arguments
+    ↓
+Load/Create Vector Store (from groundtruth data)
+    ↓
+Load Models:
+    - Cues Detection (model_name_cd)
+    - Target Classification (model_name_tc, may reuse)
+    ↓
+Create Chains (LLM wrappers)
+    ↓
+Build WorkflowHandler (compile StateGraph)
+    ↓
+For Each Unseen Datapoint:
+    - Prepare music predictions (optional)
+    - Stream initial state through workflow
+    - Save results to output_folder
+```
+
